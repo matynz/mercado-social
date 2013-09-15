@@ -1,0 +1,80 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MercadoLibre.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FEE700">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="MERCADO LIBRE" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Black"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <controls:Pivot Name="Pivots" Margin="0,-30,0,0" Foreground="DarkBlue">
+                <!--Pivot Item 2: Vista de Cuadricula -->
+                <controls:PivotItem Header="Ingresar">
+                    <Canvas>
+                        <TextBlock x:Name="UserTitle" Height="30" HorizontalAlignment="Left" Text="Nombre de Usuario" FontSize="30" VerticalAlignment="Top" Foreground="#FF333A94" FontFamily="Segoe WP Black" Canvas.Left="39" Canvas.Top="53" />
+                        <TextBox x:Name="User" Height="72" HorizontalAlignment="Left" Text="" VerticalAlignment="Top" Width="412" Canvas.Left="10" Canvas.Top="91" />
+                        <TextBlock x:Name="PasswordTitle" Height="36" HorizontalAlignment="Left" Text="Contraseña" FontSize="30" VerticalAlignment="Top" Foreground="#FF333A94" FontFamily="Segoe WP Black" Canvas.Left="39" Canvas.Top="197" />
+                        <PasswordBox x:Name="Password" Height="72" HorizontalAlignment="Left" VerticalAlignment="Top" Width="412" Canvas.Left="10" Canvas.Top="233" />
+
+
+                    </Canvas>
+
+                </controls:PivotItem>
+                <controls:PivotItem Header="Registrarse" Margin="12,0">
+                    <Grid Grid.Row="1" Margin="12,0,12,0">
+                        <TextBox Height="72" HorizontalAlignment="Left" Margin="-8,25,0,0" Name="textBox1" Text="" VerticalAlignment="Top" Width="202" />
+                        <TextBlock Height="30" HorizontalAlignment="Left" Margin="5,3,0,0" Name="textBlock1" Text="Nombre:" VerticalAlignment="Top" Foreground="#FF333A94" FontFamily="Segoe WP Black" />
+                        <TextBox Height="72" HorizontalAlignment="Left" Margin="196,25,0,0" Name="textBox2" Text="" VerticalAlignment="Top" Width="202" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="212,3,0,0" Name="textBlock2" Text="Apellido:" VerticalAlignment="Top" />
+                        <TextBox Height="72" HorizontalAlignment="Left" Margin="-8,119,0,0" Name="textBox3" Text="" VerticalAlignment="Top" Width="202" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="5,97,0,0" Name="textBlock3" Text="E-mail:" VerticalAlignment="Top" />
+                        <TextBox Height="72" HorizontalAlignment="Left" Margin="196,119,0,0" Name="textBox4" Text="" VerticalAlignment="Top" Width="202" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="212,97,0,0" Name="textBlock4" Text="Repetir E-mail:" VerticalAlignment="Top" />
+                        <PasswordBox Height="72" HorizontalAlignment="Left" Margin="-13,214,0,0" Name="textBox5"  VerticalAlignment="Top" Width="406" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="0,192,0,0" Name="textBlock5" Text="Clave:" VerticalAlignment="Top" />
+                        <TextBox Height="72" HorizontalAlignment="Left" Margin="-13,309,0,0" Name="textBox6" Text="" VerticalAlignment="Top" Width="406" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="0,287,0,0" Name="textBlock6" Text="Telefono:" VerticalAlignment="Top" />
+                        <CheckBox Content="Quiero recibir novedades por e-mail" Foreground="#FF0A0A94" Height="72" HorizontalAlignment="Left" Margin="2,476,0,0" Name="checkBox1" VerticalAlignment="Top" Width="406" FontSize="20.4" />
+                        <Image Height="77" HorizontalAlignment="Left" Margin="36,670,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="393" Source="Imagenes/btn_ejemplo.png" />
+                        <TextBlock FontFamily="/Fuente/Myriad_Bold_Italic.ttf#Myruad Bold Italic" FontSize="53" HorizontalAlignment="Left" Name="textBlock7" Text="Registrarme" Width="282" Margin="87,679,0,21"  />
+                        <phone:WebBrowser HorizontalAlignment="Left" Margin="36,0,0,0" Name="webBrowser1" VerticalAlignment="Top" Height="131" Width="393" Source="https://registration.mercadolibre.com.ar/registration/" Visibility="Collapsed" />
+                        <TextBlock FontFamily="Segoe WP Black" Foreground="#FF333A94" Height="30" HorizontalAlignment="Left" Margin="0,386,0,0" Name="textBlock8" Text="Elige una provincia" VerticalAlignment="Top" />
+                        <ListBox Height="48" HorizontalAlignment="Left" Margin="0,421,0,0" Name="listBox1" VerticalAlignment="Top" Width="382" Background="#B4FFFFFF" Foreground="Black" FontSize="26" />
+                    </Grid>
+
+                </controls:PivotItem>
+            </controls:Pivot>
+
+        </Grid>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton Text="Ingresar" Click="Ingresar_Click" IconUri="Toolkit.Content/ApplicationBar.Check.png"/>
+        </shell:ApplicationBar>
+
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

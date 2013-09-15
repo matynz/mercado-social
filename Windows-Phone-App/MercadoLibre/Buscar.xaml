@@ -1,0 +1,73 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="MercadoLibre.Buscar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot es la cuadrícula raíz donde se coloca todo el contenido de la página-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <toolkit:GestureService.GestureListener>
+            <toolkit:GestureListener             
+                    Flick="GestureListener_Flick"/>
+        </toolkit:GestureService.GestureListener>
+        
+
+        <!--ContentPanel. Colocar aquí el contenido adicional-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,607">
+            <Border Background="Yellow" Height="89" VerticalAlignment="Top" Visibility="Visible"  />            
+            <phone:WebBrowser Foreground="DarkBlue" HorizontalAlignment="Left" Margin="302,6,0,0" Name="webBrowser1" VerticalAlignment="Top" Width="106" Height="101" Visibility="Collapsed" LoadCompleted="webBrowser1_LoadCompleted" />            
+            <TextBox Height="72" Margin="135,14,6,0" Name="buscarArticulo" Text="" VerticalAlignment="Top" InputMethod.IsInputMethodEnabled="True" InputMethod.PreferredImeState="On" Background="White" Foreground="DarkBlue"/>
+
+            <ListBox Name="ListaArticulos" HorizontalAlignment="Left" Margin="6,179,0,-595" Width="468" FontSize="36" SelectionChanged="ListaArticulos_SelectionChanged"  toolkit:TiltEffect.IsTiltEnabled="True" RenderTransformOrigin="0.5,0.5" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Grid Name="Tema" Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <!--<ColumnDefinition Width="*" />-->
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="110,0,0,0" Foreground="Black" TextAlignment="Left" Text="{Binding TituloArticulo}"  VerticalAlignment="Stretch" Height="Auto" Width="410" HorizontalAlignment="Left" Name="nameVID" TextWrapping="Wrap" FontSize="20" IsHitTestVisible="False" Tap="nameVID_Tap" />
+                                <Border Name="borde" Width="90" Height="90" BorderBrush="Gray" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                                    <Image Source="{Binding ImagenArticulo}" Stretch="None" VerticalAlignment="Stretch" HorizontalAlignment="Left" />
+                                </Border>
+                                <TextBlock Width="150" Text="{Binding Precio}" Foreground="Green" TextAlignment="Center" Margin="0,60,0,0" />
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock FontFamily="Segoe WP Black" Foreground="#333A94" Height="52" HorizontalAlignment="Left" Margin="12,24,0,0" Name="textBlock1" Text="Buscar:" VerticalAlignment="Top" FontSize="32" Width="123" />
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="12,132,0,-73" Name="textBlock2" Text="Mostrando articulos:" VerticalAlignment="Top" Foreground="#FF333A94" FontFamily="Segoe WP Black" Visibility="Collapsed"  />
+            <TextBlock Height="32" HorizontalAlignment="Right" Margin="0,132,64,-75" Name="pagina1" Text="0" VerticalAlignment="Top" Width="166" Foreground="#FFFF3A00" FontSize="22" FontFamily="Segoe WP Black" Visibility="Collapsed" />
+            <!--<TextBlock FontFamily="Segoe WP Black" FontSize="22" Foreground="#FF333A94" Height="30" HorizontalAlignment="Right" Margin="0,120,97,0" Name="pagina2" Text="0" VerticalAlignment="Top" Width="56" Visibility="Collapsed" />-->
+            <TextBlock FontFamily="Segoe WP Black" FontSize="26" Foreground="#FF333A94" Height="32" HorizontalAlignment="Left" Margin="12,92,0,-35" Name="cantArticulos" Text="Resultados " VerticalAlignment="Top" Width="285" Visibility="Collapsed" />
+        </Grid>
+    </Grid>
+
+    <!--Código de ejemplo que muestra el uso de ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Text="Filtrar" Click="Filtrar_Click" IconUri="/Icons/Filter.png" IsEnabled="False"/>
+            <shell:ApplicationBarIconButton IconUri="/Icons/appbar.feature.search.rest.png" Text="Buscar" Click="ApplicationBarIconButton_Click" />
+            <shell:ApplicationBarIconButton x:Name="appBarAnterior"  IconUri="/Icons/appbar.back.rest.png" Text="Anterior" IsEnabled="False" Click="appBarAnterior_Click" />
+            <shell:ApplicationBarIconButton x:Name="appBarSiguiente" IconUri="/Icons/appbar.next.rest.png" Text="Siguiente" IsEnabled="False" Click="appBarSiguiente_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

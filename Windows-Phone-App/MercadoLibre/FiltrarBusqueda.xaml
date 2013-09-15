@@ -1,0 +1,55 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MercadoLibre.FiltrarBusqueda"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Canvas>
+                <Image Height="90" HorizontalAlignment="Left" Margin="36,41,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="393" Source="/Imagenes/logoblanco.png" Tap="NavToMain_Tap" toolkit:TiltEffect.IsTiltEnabled="True"/>
+                <TextBlock Text="Categoria" FontFamily="Segoe WP Black" Foreground="#333A94" Height="52" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="38" Width="123" Canvas.Left="37" Canvas.Top="164" />
+                <toolkit:ListPicker x:Name="Categoria" HorizontalContentAlignment="Center" FullModeHeader="Periodo" CacheMode="BitmapCache" Margin="0" Canvas.Top="229" Width="436" SelectionChanged="Categoria_SelectionChanged_1" Canvas.Left="10" Background="Yellow">
+                    <toolkit:ListPicker.FullModeItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="16 21 0 20">
+                                <Rectangle Fill="{Binding}" Width="43" Height="43"/>
+                                <TextBlock Text="{Binding}" Margin="16 0 0 0" FontSize="43"
+                             FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </toolkit:ListPicker.FullModeItemTemplate>
+                </toolkit:ListPicker>
+
+                <TextBlock Text="Rango" FontFamily="Segoe WP Black" Foreground="#333A94" Height="52" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="38" Width="123" Canvas.Left="37" Canvas.Top="415" />
+                <TextBox Name="Minimo" Text="" Foreground="Black" Canvas.Top="472" Width="225" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" InputScope="Number" Background="Yellow"/>
+                <TextBox Name="Maximo" Text="" Foreground="Black" Canvas.Top="472" Width="221" Canvas.Left="235" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" InputScope="Number" Background="Yellow"/>
+
+                <phone:WebBrowser HorizontalAlignment="Left" Margin="181,7,0,0" Name="webBrowser1" VerticalAlignment="Top" Height="44" Width="50" Visibility="Collapsed" LoadCompleted="webBrowser1_LoadCompleted" />
+            </Canvas>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton Text="Confirmar" Click="Confirmar_Click" IconUri="/Toolkit.Content/Applicationbar.Check.png"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>
